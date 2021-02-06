@@ -13,16 +13,26 @@ Might work on older versions, but I didn't test it.
 Role Variables
 --------------
 
-`proxysql_admin_user` proxysql administrative user
-`proxysql_admin_password` password for proxysql administrative user
-`proxysql_stats_user` proxysql statistics webpage login
-`proxysql_stats_user_password` proxysql statistics webpage password
+`proxysql_admin_user` proxysql administrative user.
+
+`proxysql_admin_password` password for proxysql administrative user.
+
+`proxysql_stats_user` proxysql statistics webpage login.
+
+`proxysql_stats_user_password` proxysql statistics webpage password.
+
 `monitor_user` proxysql monitoring user. Must exist in your PXC cluster.
+
 `monitor_user_password` monitoring user's password. Must match with monitoring user's password in your PXC cluster.
+
 `node1_address` PXC node's address. Configuration of this role assumes that there are three nodes in your PXC cluster.
+
 `node2_address` PXC node's address. Configuration of this role assumes that there are three nodes in your PXC cluster.
+
 `node3_address` PXC node's address. Configuration of this role assumes that there are three nodes in your PXC cluster.
+
 `proxysql_client_user` proxysql user to login to PXC cluster. Must exist in PXC cluster.
+
 `proxysql_client_user_password` client user's password. Must match client user's password in PXC cluster.
 
 Example Playbook
