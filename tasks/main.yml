@@ -1,0 +1,10 @@
+---
+# tasks file for proxysql_installer
+
+- name: Debian mysql installation
+  import_tasks: proxysql_debian.yml
+  when: ansible_distribution == "Debian"
+
+- name: Ubuntu mysql installation
+  import_tasks: proxysql_ubuntu.yml
+  when: ansible_distribution == "Ubuntu"

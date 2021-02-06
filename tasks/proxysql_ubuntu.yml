@@ -1,0 +1,41 @@
+---
+
+  - name: Add percona apt repository
+    apt:
+      deb: https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+      update_cache: yes
+
+  - name: Enable pxc80 release
+    command: percona-release enable pxc-80
+
+  - name: Install percona packages
+    apt:
+      pkg:
+        - percona-xtradb-cluster-client
+        - proxysql2
+      update_cache: yes
+
+  - name: Copy proxysql config
+    template:
+      src: templates/proxysql.cnf.j2
+      dest: /etc/proxysql.cnf
+      owner: root
+      group: proxysql
+      mode: '0640'
+
+  - name: Stop proxysql service
+    systemd:
+      name: proxysql
+      state: stopped
+
+  - name: Remove proxysql default persistent config
+    file:
+      path: /var/lib/proxysql/proxysql.db
+      state: absent
+
+  - name: Start proxysql service
+    systemd:
+      name: proxysql
+      state: started
+      enabled: yes
+
